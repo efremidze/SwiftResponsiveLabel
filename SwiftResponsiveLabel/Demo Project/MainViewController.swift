@@ -89,14 +89,14 @@ class MainViewController: UIViewController {
 			let dict = [RLHighlightedBackgroundColorAttributeName:UIColor.black,
 			            RLHighlightedForegroundColorAttributeName:UIColor.green,RLTapResponderAttributeName:action] as [String : Any]
 
-			let token = NSAttributedString(string: "...More",
+			let token = NSAttributedString(string: "... More",
 			                               attributes: [NSFontAttributeName:self.customLabel.font,
 											NSForegroundColorAttributeName:UIColor.brown,
 											RLHighlightedAttributesDictionary: dict])
 			customLabel.attributedTruncationToken = token
 
 		case 1:
-			customLabel.truncationToken = "...Load More"
+			customLabel.truncationToken = "... Load More"
 		case 2:
 			customLabel.truncationIndicatorImage = UIImage(named: "check")
 

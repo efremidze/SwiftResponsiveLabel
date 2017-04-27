@@ -25,8 +25,8 @@ class InteractiveTableViewCell: UITableViewCell {
 	@IBOutlet weak var responsiveLabel: SwiftResponsiveLabel!
 	static let cellIdentifier = "InteractiveTableViewCellIdentifier"
 	var delegate: InteractiveTableViewCellDelegate?
-	var collapseToken = "...Read Less"
-	var expandToken = "...Read More"
+	var collapseToken = "... Read Less"
+	var expandToken = "... Read More"
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()

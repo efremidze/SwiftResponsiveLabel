@@ -148,6 +148,31 @@ open class TextKitStack {
 			self.layoutManager.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: &lineRange)
 			rangeOfText = lineRange
 		}
+        
+        let string = currentAttributedText.attributedSubstring(from: NSMakeRange(0, rangeOfText.location)).string
+        print(string)
+        
+        let str = (string as NSString)
+        var lastWord = ""
+        var lastWordRange = NSMakeRange(NSNotFound, 0)
+        str.enumerateSubstrings(in: NSMakeRange(0, str.length), options: [.byWords, .reverse]) { word, subRange, enclosingRange, stop in
+            let last = str.length - NSMaxRange(subRange)
+            if last > attributedTruncationToken.length {
+                lastWord = word!
+                print(subRange)
+                lastWordRange = subRange
+                stop.pointee = true
+            }
+        }
+        print("--->")
+        print(lastWord)
+        print(lastWordRange.location)
+        print(lastWordRange.length)
+        
+        if !lastWord.isEmpty {
+            return NSMakeRange(NSMaxRange(lastWordRange), attributedTruncationToken.length)
+        }
+        
 		let completeRect = boundingRectForCompleteText()
 		let sizeOfToken = attributedTruncationToken.sizeOfText()
 		var rectOfToken = CGRect.zero
